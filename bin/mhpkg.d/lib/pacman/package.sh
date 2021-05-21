@@ -14,3 +14,15 @@ add_dependency() {
 build_using_cmake_and_git() {
   source "$MH_PKG_PATH/lib/pacman/cmake.sh"
 }
+
+copy_git_files() {
+  source "$MH_PKG_PATH/lib/pacman/copy.sh"
+}
+
+set_copy_destination() {
+  copy_destination=${1}
+}
+
+set_copy_source() {
+  copy_source=${1}
+}

@@ -12,7 +12,7 @@ source=("git://$MH_GIT_SERVER/$MH_GIT_USERNAME/$MH_GIT_REPO.git")
 
 
 build() {
-    cd "$srcdir/$pkgname" || exit 1
+    cd "$srcdir/$MH_GIT_REPO" || exit 1
     cmake -B . \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-    cd "$srcdir/$pkgname" || exit 1
+    cd "$srcdir/$MH_GIT_REPO" || exit 1
     DESTDIR="$pkgdir" cmake --install .
 }
 
