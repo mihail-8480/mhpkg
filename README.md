@@ -10,6 +10,15 @@ cd mhrepo
 mhpkg install mhpkg
 ```
 
+## Configuation
+`/usr/bin/mhpkg.d/lib/mhpkg.conf`
+```conf
+MH_PKG_BACKEND=pacman
+```
+You can change `MH_PKG_BACKEND` to your package manager if it's supported.
+
+The currently supported package managers are: `pacman`.
+
 ## Usage
 The `build`, `install` and `clean` commands have alternatives that apply to every single package in the current directory, those are: `build_all`, `install_all` and `clean_all`.
 
