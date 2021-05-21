@@ -1,0 +1,107 @@
+#!/bin/sh
+
+if [ -z "$MH_PKG_PATH" ]; then
+  export MH_PKG_BIN_PATH="$( cd -- "$(dirname "${0}")" >/dev/null 2>&1 ; pwd -P )"
+  export MH_PKG_PATH="$MH_PKG_BIN_PATH/mhpkg.d"
+fi
+
+source "$MH_PKG_PATH/lib/mhpkg.conf"
+source "$MH_PKG_PATH/lib/$MH_PKG_BACKEND/$MH_PKG_BACKEND.sh"
+
+clean() {
+  echo "Cleaning '${1}'..."
+  if [ -f "${1}/package.mhpkg" ]; then
+    find "${1}" ! -name 'package.mhpkg' -type f -exec rm -f {} +
+    find "${1}" ! -name "$(echo "${1}" | sed 's:/*$::')" -type d -exec rm -rf {} +
+    rm -rf "${1}${1}"
+  else
+    echo "This is not a package directory, ingoing command."
+  fi
+}
+
+clean_all() {
+  for d in */; do
+    if [ "$d" = "mhpkg.d/" ]; then
+      continue
+    fi
+    clean "$d"
+  done
+}
+
+install_all() {
+  for d in */; do
+    if [ "$d" = "mhpkg.d/" ]; then
+      continue
+    fi
+    install "$d"
+  done
+}
+
+build_all() {
+  for d in */; do
+    if [ "$d" = "mhpkg.d/" ]; then
+      continue
+    fi
+    build "$d"
+  done
+}
+
+help() {
+  echo "Usage: ${0} command [package]"
+  echo
+  echo "The valid commands are:"
+  echo "- clean [package]: Cleans all downloaded and generated files in a package's directory."
+  echo "- install [package]: Builds and installs a package from a directory's PKGBUILD."
+  echo "- build [package]: Builds a package from a directory's package.mhpkg."
+  echo "- clean_all: Cleans all downloaded and generated files."
+  echo "- install_all: Builds and installs every package."
+  echo "- build_all: Builds every package."
+  echo "- lib: Don't do anything (declares the functions)."
+  echo
+}
+
+main() {
+  if [ "${1}" = "clean_all" ]; then
+    clean_all
+    exit 0
+  fi
+
+  if [ "${1}" = "clean" ]; then
+    clean "${2}/"
+    exit 0
+  fi
+
+  if [ "${1}" = "install_all" ]; then
+    install_all
+    exit 0
+  fi
+
+  if [ "${1}" = "build_all" ]; then
+    build_all
+    exit 0
+  fi
+
+  if [ "${1}" = "install" ]; then
+    install "${2}"
+    exit 0
+  fi
+
+  if [ "${1}" = "build" ]; then
+    build "${2}"
+    exit 0
+  fi
+
+  if [ "${1}" = "help" ]; then
+    help
+    exit 0
+  fi
+
+  echo "${0}: invalid command: ${1}"
+  echo "Try '${0} help' for more information."
+  exit 1
+}
+
+
+if [ "${1}" != "lib" ]; then
+  main $@
+fi
