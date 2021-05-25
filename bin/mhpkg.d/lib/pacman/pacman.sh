@@ -1,4 +1,5 @@
 #!/bin/sh
+export MH_PKG_SOURCE="$MH_PKG_PATH/lib/$MH_PKG_BACKEND/package.sh"
 prepare_package() {
   if [ -f "package.mhpkg" ]; then
     echo source "\$MH_PKG_SOURCE" > PKGBUILD
@@ -27,4 +28,13 @@ build() {
   cd "$prev"
 }
 
-export MH_PKG_SOURCE="$MH_PKG_PATH/lib/$MH_PKG_BACKEND/package.sh"
+clean() {
+  echo "Cleaning '${1}'..."
+  if [ -f "${1}/package.mhpkg" ]; then
+    find "${1}" ! -name 'package.mhpkg' -type f -exec rm -f {} +
+    find "${1}" ! -name "$(echo "${1}" | sed 's:/*$::')" -type d -exec rm -rf {} +
+    rm -rf "${1}${1}"
+  else
+    echo "This is not a package directory, ignoring command."
+  fi
+}

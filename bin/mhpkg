@@ -4,7 +4,7 @@ if [ -z "$MH_PKG_PATH" ]; then
   export MH_PKG_PATH="$MH_PKG_BIN_PATH/mhpkg.d"
 fi
 
-source "$MH_PKG_PATH/lib/mhpkg.conf"
+source "$MH_PKG_PATH/etc/mhpkg.conf"
 source "$MH_PKG_PATH/lib/$MH_PKG_BACKEND/$MH_PKG_BACKEND.sh"
 source "$MH_PKG_PATH/mhpkg.sh"
 
