@@ -1,7 +1,4 @@
 #!/bin/sh
-source "$MH_PKG_PATH/lib/mhpkg.conf"
-source "$MH_PKG_PATH/lib/$MH_PKG_BACKEND/$MH_PKG_BACKEND.sh"
-
 clean() {
   echo "Cleaning '${1}'..."
   if [ -f "${1}/package.mhpkg" ]; then
