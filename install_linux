@@ -1,0 +1,1 @@
+git clone https://github.com/mihail-8480/mhpkg /tmp/mhpkg && /tmp/mhpkg/bin/mhpkg install mhpkg && rm -rf /tmp/mhpkg

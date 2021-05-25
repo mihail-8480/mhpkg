@@ -3,9 +3,7 @@ My personal package build system.
 
 ## Installation
 ```shell
-git clone https://github.com/mihail-8480/mhpkg
-cd mhpkg/bin
-./mhpkg install mhpkg
+git clone https://github.com/mihail-8480/mhpkg /tmp/mhpkg && /tmp/mhpkg/bin/mhpkg install mhpkg && rm -rf /tmp/mhpkg
 ```
 
 ## Configuration
