@@ -5,4 +5,4 @@ if [ -z "$MH_PKG_PATH" ]; then
   export MH_PKG_PATH="$MH_PKG_BIN_PATH/mhpkg.d"
 fi
 
-"$MH_PKG_BIN_PATH/mhpkg" $@
+"$MH_PKG_PATH/mhpkg" $@
