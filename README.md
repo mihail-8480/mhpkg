@@ -7,7 +7,7 @@ git clone https://github.com/mihail-8480/mhpkg /tmp/mhpkg && /tmp/mhpkg/bin/mhpk
 ```
 ## Configuration
 If you want to change how `mhpkg` behaves you can edit the file:
-`/usr/bin/mhpkg.d/lib/mhpkg.conf`
+`/usr/bin/mhpkg.d/etc/mhpkg.conf`
 ## Usage
 
 ### Build
