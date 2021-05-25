@@ -1,7 +1,4 @@
-pkgrel=0
-epoch=1
 arch=("any")
-license=('MIT')
 md5sums=('SKIP')
 if [ -z "$MH_GIT_REPO" ]; then
   export MH_GIT_REPO=$pkgname

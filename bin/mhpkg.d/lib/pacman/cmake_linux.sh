@@ -1,7 +1,4 @@
-pkgrel=0
-epoch=1
 arch=("$(uname -m)")
-license=('MIT')
 makedepends=('cmake' 'gcc' 'make' 'git')
 md5sums=('SKIP')
 if [ -z "$MH_GIT_REPO" ]; then
