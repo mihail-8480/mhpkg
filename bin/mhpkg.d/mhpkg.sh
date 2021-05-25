@@ -66,8 +66,3 @@ main() {
   fi
   echo "Nothing to do."
 }
-
-
-if [ "${1}" != "lib" ]; then
-  main $@
-fi
