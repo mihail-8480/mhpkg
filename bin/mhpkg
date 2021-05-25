@@ -21,6 +21,7 @@ clean() {
 
 update_repo() {
   prev=$PWD
+  cd "$MH_PKG_REPO"
   git pull
   cd "$prev"
 }
