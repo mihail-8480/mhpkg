@@ -9,6 +9,6 @@ source=("git://$MH_GIT_SERVER/$MH_GIT_USERNAME/$MH_GIT_REPO.git")
 package() {
   cd "$srcdir/$MH_GIT_REPO" || exit 1
   mkdir -p $pkgdir/$copy_destination
-  cp -r "$srcdir/$MH_GIT_REPO/$copy_source/*" "$pkgdir/$copy_destination"
+  cp -r "$srcdir/$MH_GIT_REPO/$copy_source/" "$pkgdir/$copy_destination"
 }
 
