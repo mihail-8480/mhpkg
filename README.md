@@ -5,7 +5,6 @@ My personal package build system.
 ```shell
 git clone https://github.com/mihail-8480/mhpkg /tmp/mhpkg && /tmp/mhpkg/bin/mhpkg install mhpkg && rm -rf /tmp/mhpkg
 ```
-
 ## Configuration
 If you want to change how `mhpkg` behaves you can edit the file:
 `/usr/bin/mhpkg.d/lib/mhpkg.conf`
